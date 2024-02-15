@@ -1,0 +1,1740 @@
+{
+	"info": {
+		"_postman_id": "ec4f579b-12a5-46ab-ae04-0e47b1d9b61c",
+		"name": "Lesson 12",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1911365",
+		"_collection_link": "https://martian-meadow-129120.postman.co/workspace/QA-pro~595143fb-9ef3-48fd-9f64-a7edc9b7324c/collection/1911365-ec4f579b-12a5-46ab-ae04-0e47b1d9b61c?action=share&source=collection_link&creator=1911365"
+	},
+	"item": [
+		{
+			"name": "1. Execution order of scripts",
+			"item": [
+				{
+					"name": "Pre request vs Test",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(\"Pre request form request\")"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log(\"Test form request\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/instructions",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"instructions"
+							]
+						},
+						"description": "<img src=\"https://content.pstmn.io/aec4303f-e7b6-4aa1-bf81-8ccfddc8277c/U2NyZWVuc2hvdF8yNC5wbmc=\" width=\"806\" height=\"299\">"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log(\"Pre request from folder\")"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log(\"Test from folder\")"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Object pm base properties and methods",
+			"item": [
+				{
+					"name": "What is pm.  pm.variables",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Як і будьякий обєкт pm має свої властивості та методи. Ось наприклад pm.variables який ми вже з вами \r",
+									"// розбирали\r",
+									"\r",
+									"/*pm.variables.set('fordId', 3);\r",
+									"console.log(pm.variables);\r",
+									"console.log(pm.environment);\r",
+									"console.log(pm.globals);*/\r",
+									"\r",
+									"//console.log(pm.variables.has(\"url\")); // Перевіряє, чи є змінна Postman у поточній області:\r",
+									"\r",
+									"//console.log(pm.variables.get(\"url\")); // Отримання зміної \r",
+									"\r",
+									"\r",
+									"/*pm.variables.set(\"example\", \"QA pro\"); // Встановлення зміної\r",
+									"console.log(pm.variables.get(\"example\"));*/\r",
+									"\r",
+									"//console.log(pm.variables.replaceIn('{{$randomFirstName}}')); // Отримання динамічної зміної\r",
+									"\r",
+									"//console.log(pm.variables.toObject()) // Обережно, показую навіть приховані зміні\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"{{$randomFirstName}}\",\r\n  \"lastName\": \"{{$randomLastName}}\",\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"repeatPassword\": \"Qwerty12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/auth/signup",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						},
+						"description": "Об'єкт pm в Postman представляє собою глобальний об'єкт, який можна використовувати для виконання різних завдань і маніпуляцій у сценаріях (скриптах) колекцій або запитів. pm надає доступ до різних функцій та змінних, що дозволяє вам автоматизувати та налаштовувати ваш робочий процес у Postman. Ось кілька прикладів використання об'єкта pm"
+					},
+					"response": []
+				},
+				{
+					"name": "pm.info",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// pm.info об'єкт,  містить інформацію про поточний запит і оточення.\r",
+									"//console.log(pm.info.eventName);\r",
+									"//console.log(pm.info.iteration);\r",
+									"//console.log(pm.info.requestId);\r",
+									"//console.log(pm.info.requestName);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"{{$randomFirstName}}\",\r\n  \"lastName\": \"{{$randomLastName}}\",\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"repeatPassword\": \"Qwerty12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/auth/signup",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pm.request",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// pm.request: Об'єкт, який містить інформацію про поточний запит.\r",
+									"\r",
+									"//console.log(pm.request.url); // Повертає url\r",
+									"\r",
+									"// ПОвертає як ви вже здогадалися headers. Зверніть увагу що саме воно повертає!\r",
+									"//console.log(pm.request.headers)\r",
+									"\r",
+									"// Додавання headers\r",
+									"/*pm.request.headers.add({\r",
+									"  key: \"id\",\r",
+									"  value: \"1234567\"\r",
+									"});*/\r",
+									"\r",
+									"//pm.request.headers.remove(\"test\"); // Видалення headers\r",
+									"\r",
+									"//console.log(pm.request.method) // Повертає метод! Можливо колись згодиться\r",
+									"\r",
+									"//console.log(pm.request.body); // Повертає тіло запиту. Але що воно повертає\r",
+									"\r",
+									"//console.log(typeof pm.request.body) // Начебто все гаразд\r",
+									"//console.log(pm.request.body.raw) // А якщо ось так ?\r",
+									"//console.log(typeof pm.request.body.raw)\r",
+									"\r",
+									"// Ось тут нам і потрібно його перетворювати до обєкту\r",
+									"//console.log(JSON.parse(pm.request.body.raw));\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "test",
+								"value": "test",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"{{$randomFirstName}}\",\r\n  \"lastName\": \"{{$randomLastName}}\",\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"repeatPassword\": \"Qwerty12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/auth/signup",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pm.response",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// pm.response: Об'єкт, який містить інформацію про відповідь\r",
+									"\r",
+									"//console.log(pm.response.code); // Отримання статус коду\r",
+									"\r",
+									"//console.log(pm.response.status); // Повертає саму дію яку виконує запит\r",
+									"\r",
+									"//console.log(pm.response.headers) // Повертає масив наших хедерів\r",
+									"\r",
+									"//console.log(pm.response.responseTime) // Час отримання відповіді в мілісекундах\r",
+									"\r",
+									"//console.log(pm.response.responseSize) // Розмір отриманої відповіді\r",
+									"\r",
+									"/*console.log(pm.response.text()) // Повертає нам нашу відповідь, і як вибачите у текстовому форматі\r",
+									"console.log(JSON.parse(pm.response.text()))\r",
+									"*/\r",
+									"\r",
+									"//console.log(pm.response.json()) // І навіть не потрібен parse\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"{{$randomFirstName}}\",\r\n  \"lastName\": \"{{$randomLastName}}\",\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"repeatPassword\": \"Qwerty12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/auth/signup",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pm.cookies",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Минулого разу ми вже знайомилися де і як можна подивитися cookies, але звісно нам хочеться \r",
+									"//проводити різні маніпуляції з ними, що і дає нам pm.cookies\r",
+									"\r",
+									"/*\r",
+									"console.log(pm.cookies); // Масив кук\r",
+									"console.log(pm.cookies.has('sid')); // Перевірте, чи існує певний файл cookie (вказаний за назвою)\r",
+									"*/\r",
+									"\r",
+									"//console.log(pm.cookies.get('sid')) //Отримати значення вказаного файлу cookie\r",
+									"\r",
+									"//console.log(pm.cookies.toObject()) // Отримати копію всіх файлів cookie та їхніх значень в об’єкті.\r",
+									"\r",
+									"// А ось тут вже цікавіше! Перед тим як користуватися cookies.jar() вам потрібно додати domain до allowlist\r",
+									"\r",
+									"\r",
+									"const cookieJar = pm.cookies.jar();\r",
+									"//cookieJar.set(\"https://qauto.forstudy.space\", \"test_key\", \"test_value\"); // Просто додаємо кукі\r",
+									"\r",
+									"\r",
+									"// А ось і наші callback функції\r",
+									"\r",
+									"/*\r",
+									"cookieJar.set(\"https://qauto.forstudy.space\", \"test2_key\", \"test_value\", function(error, cookie) {\r",
+									"    if (error) {\r",
+									"        console.error(\"Помилка під час встановлення cookie:\", error);\r",
+									"    } else {\r",
+									"        console.log(\"Cookie було успішно встановлено:\", cookie);\r",
+									"    }\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Ну і звісно приклда стрілкової функції з додатковими параметрами cookie\r",
+									"/*\r",
+									"let cookie = {\r",
+									"    name:'test2',\r",
+									"    value:'test2',  \r",
+									"    secure: true, \r",
+									"    httpOnly: true    \r",
+									"}\r",
+									"\r",
+									"cookieJar.set(\"https://qauto.forstudy.space\",cookie, (error, cookie)=> {\r",
+									"    if (error) {\r",
+									"        console.error(\"Помилка під час встановлення cookie:\", error);\r",
+									"    } else {\r",
+									"        console.log(\"Cookie було успішно встановлено:\", cookie);\r",
+									"    }\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Ну і звісно інші CRUD маніпуляції з кукою\r",
+									"\r",
+									"/*\r",
+									"cookieJar.get(\"https://qauto.forstudy.space\", \"test2\", function(error, cookie) {\r",
+									"    if (error) {\r",
+									"        console.error(\"Помилка під час встановлення cookie:\", error);\r",
+									"    } else {\r",
+									"        console.log(\"Cookie було успішно встановлено:\", cookie);\r",
+									"    }\r",
+									"});\r",
+									"*/\r",
+									"/*\r",
+									"cookieJar.getAll(\"https://qauto.forstudy.space\", function(error, cookie) {\r",
+									"    if (error) {\r",
+									"        console.error(\"Помилка під час встановлення cookie:\", error);\r",
+									"    } else {\r",
+									"        console.log(\"Cookie було успішно встановлено:\", cookie);\r",
+									"        return cookie;\r",
+									"    }\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"/*\r",
+									"cookieJar.unset(\"https://qauto.forstudy.space\" , \"test2\", (error, cookie)=>{\r",
+									"   if (error) {\r",
+									"        console.error(\"Помилка під час встановлення cookie:\", error);\r",
+									"    } else {\r",
+									"        console.log(\"Cookie було успішно встановлено:\", cookie);\r",
+									"        return cookie;\r",
+									"    }\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"//cookieJar.clear(URL, callback (error));\r",
+									"\r",
+									"\r",
+									"// Давайте розглянемо один приклад!\r",
+									"/*let test2Cookie = cookieJar.get(\"https://qauto.forstudy.space\", \"test2_key\", (error, cookie)=>{\r",
+									"    return cookie;\r",
+									"});\r",
+									"console.log(\"From cookieJar \" + test2Cookie); // Так так, а що в нас тут ? Асинхронна робота\r",
+									"console.log(\"From pm \" + pm.cookies.get(\"test2_key\"));*/\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableCookies": false,
+						"followRedirects": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"{{$randomFirstName}}\",\r\n  \"lastName\": \"{{$randomLastName}}\",\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"repeatPassword\": \"Qwerty12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/auth/signup",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Interceptor cookies TO DO",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Найголовніше що треба зробити, це встановити google extension\r",
+									"// Детальна інструкція https://learning.postman.com/docs/sending-requests/capturing-request-data/syncing-cookies/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableCookies": false,
+						"followRedirects": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"{{$randomFirstName}}\",\r\n  \"lastName\": \"{{$randomLastName}}\",\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"password\": \"Qwerty12345\",\r\n  \"repeatPassword\": \"Qwerty12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/auth/signup",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Pre request",
+			"item": [
+				{
+					"name": "Pre request send GET request",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Якщо ви звернете увагу на Snippets які ми маємо, майже всі ими\r",
+									"\r",
+									"// В цілому ми вже розглядали майже всі методи які у нас є в Snippets, окрім одного sendReququest!\r",
+									"/*let modelId;\r",
+									"pm.sendRequest(\"https://qauto.forstudy.space/api/cars/models\", (error, response) => {\r",
+									"  if (error) {\r",
+									"    console.log(error);\r",
+									"  } else {\r",
+									"   modelId = response.json().data[0].id;\r",
+									"   pm.variables.set(\"carModeId\", modelId);\r",
+									"   console.log(response.json());\r",
+									"  }\r",
+									"});*/\r",
+									"\r",
+									"// Трохи оптимізації\r",
+									"/*pm.sendRequest(\"https://qauto.forstudy.space/api/cars/models\", (error, response) => {\r",
+									"  (error) ? console.log(error) : pm.variables.set(\"carModeId\", response.json().data[0].id);\r",
+									"});*/"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/cars/models/{{carModeId}}",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"cars",
+								"models",
+								"{{carModeId}}"
+							]
+						},
+						"description": "<img src=\"https://content.pstmn.io/aec4303f-e7b6-4aa1-bf81-8ccfddc8277c/U2NyZWVuc2hvdF8yNC5wbmc=\" width=\"806\" height=\"299\">"
+					},
+					"response": []
+				},
+				{
+					"name": "Pre request send GET request Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Створюємо обєкт для нашого запиту\r",
+									"const requestBody = {\r",
+									"  name: \"Test\",\r",
+									"  lastName: \"Test\",\r",
+									"  email: pm.variables.replaceIn(\"{{$randomEmail}}\"),\r",
+									"  password: \"Qwerty12345\",\r",
+									"  repeatPassword: \"Qwerty12345\"\r",
+									"}\r",
+									"\r",
+									"// Створюємо наш запит\r",
+									"const createUserRequest = {\r",
+									"  url: 'https://qauto.forstudy.space/api/auth/signup',\r",
+									"  method: 'POST',\r",
+									"  header: {\r",
+									"    'Content-Type': 'application/json',\r",
+									"  },\r",
+									"  body: {\r",
+									"    mode: 'raw',\r",
+									"    raw: JSON.stringify(requestBody)\r",
+									"  }\r",
+									"};\r",
+									"\r",
+									"// Відправка запита\r",
+									"pm.sendRequest(createUserRequest, (error, response) => {\r",
+									"  if (error) {\r",
+									"    console.log(error);\r",
+									"  } else {\r",
+									"    console.log(response);\r",
+									"    pm.variables.set(\"email\",requestBody.email);\r",
+									"    pm.variables.set(\"password\",requestBody.password);\r",
+									"  } \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/auth/signin",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						},
+						"description": "<img src=\"https://content.pstmn.io/aec4303f-e7b6-4aa1-bf81-8ccfddc8277c/U2NyZWVuc2hvdF8yNC5wbmc=\" width=\"806\" height=\"299\">"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4. Tests",
+			"item": [
+				{
+					"name": "Test general snippets",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Давайте розглянемо які ми маємо Snippets в тесті. Цілком багато чого ми вже бачили!\r",
+									"// Почнемо зі Status code\r",
+									"/*\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Перевірка строки\r",
+									"\r",
+									"/*\r",
+									"pm.test(\"Check title for Audi TT\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"TT\");\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// А ось і чітка перевірка за значеням\r",
+									"/*\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json(); // Вже відоме нам тіло відповіді\r",
+									"    pm.expect(jsonData.data.id).to.eql(1);\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Перевірка повністью тіла\r",
+									"/*\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\r",
+									"        {\r",
+									"            \"status\": \"ok\",\r",
+									"            \"data\": {\r",
+									"                \"id\": 1,\r",
+									"                \"carBrandId\": 1,\r",
+									"                \"title\": \"TT\"\r",
+									"        }\r",
+									"    });\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"//В цілому тут і так все зрозусіло!\r",
+									"/*\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// В цілому також може знадобитись якщо нам важлива швидкість !\r",
+									"/*\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Обираємо щось одне!\r",
+									"/*\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Можна перевірити не сам статус код, а і його текст\r",
+									"\r",
+									"/*\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"*/\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/cars/models/1",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"cars",
+								"models",
+								"1"
+							]
+						},
+						"description": "<img src=\"https://content.pstmn.io/aec4303f-e7b6-4aa1-bf81-8ccfddc8277c/U2NyZWVuc2hvdF8yNC5wbmc=\" width=\"806\" height=\"299\">"
+					},
+					"response": []
+				},
+				{
+					"name": "XML to JSON object",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonObject = xml2Json(responseBody);\r",
+									"console.log(jsonObject);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://www.dneonline.com/calculator.asmx?WSDL",
+							"protocol": "http",
+							"host": [
+								"www",
+								"dneonline",
+								"com"
+							],
+							"path": [
+								"calculator.asmx"
+							],
+							"query": [
+								{
+									"key": "WSDL",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "JSON schema validation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Створюємо нашу схему!\r",
+									"/*\r",
+									"var schema = {\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"status\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"id\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"carBrandId\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"title\": {\r",
+									"          \"type\": \"string\"\r",
+									"        }\r",
+									"      },\r",
+									"      \"additionalProperties\": true,\r",
+									"      \"required\": [\r",
+									"        \"id\",\r",
+									"        \"carBrandId\",\r",
+									"        \"title\"\r",
+									"      ]\r",
+									"    }\r",
+									"  },\r",
+									"  \"additionalProperties\": true,\r",
+									"  \"required\": [\r",
+									"    \"status\",\r",
+									"    \"data\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"\r",
+									"pm.test('Schema is valid', function () {\r",
+									"    pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// А якщо ось так \r",
+									"/*\r",
+									"var schema = {\r",
+									"  \"type\": \"object\"\r",
+									"}\r",
+									"\r",
+									"// І так також все добре!()\r",
+									"pm.test('Schema is valid2', function () {\r",
+									"    pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Давайте спробуємо іншу валідацію\r",
+									"/*\r",
+									"var schema = {\r",
+									"  \"type\": \"object\"\r",
+									"}\r",
+									" \r",
+									"// І все працює так само!\r",
+									"pm.test('Schema is valid3', function () {\r",
+									"   pm.response.to.have.jsonSchema(schema);\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Ще одна спроба!\r",
+									"/*\r",
+									"var schema = {\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"status\": {\r",
+									"      \"type\": \"object\" // Замінемо string на object\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"id\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"carBrandId\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"title\": {\r",
+									"          \"type\": \"string\"\r",
+									"        }\r",
+									"      },\r",
+									"      \"additionalProperties\": true,\r",
+									"      \"required\": [\r",
+									"        \"id\",\r",
+									"        \"carBrandId\",\r",
+									"        \"title\"\r",
+									"      ]\r",
+									"    }\r",
+									"  },\r",
+									"  \"additionalProperties\": true,\r",
+									"  \"required\": [\r",
+									"    \"status\",\r",
+									"    \"data\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"// нарешті хочь помилка!\r",
+									"pm.test('Schema is valid4', function () {\r",
+									"   pm.response.to.have.jsonSchema(schema);\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// А давайте перевіремо такий варіант\r",
+									"/*\r",
+									"var schema = {\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"statusssss\": {  // Змінемо сам ключ, а значення буде правильним\r",
+									"      \"type\": \"string\" \r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"id\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"carBrandId\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"title\": {\r",
+									"          \"type\": \"string\"\r",
+									"        }\r",
+									"      },\r",
+									"      \"additionalProperties\": true,\r",
+									"      \"required\": [\r",
+									"        \"id\",\r",
+									"        \"carBrandId\",\r",
+									"        \"title\"\r",
+									"      ]\r",
+									"    }\r",
+									"  },\r",
+									"  \"additionalProperties\": true,\r",
+									"  \"required\": [\r",
+									"    \"status\",\r",
+									"    \"data\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"// Та щож таке, знову все гаразд!\r",
+									"pm.test('Schema is valid4', function () {\r",
+									"   pm.response.to.have.jsonSchema(schema);\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// І остання спроба!\r",
+									"/*\r",
+									"var schema = {\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"statusss\": {\r",
+									"      \"types\": \"string\" // Змінемо сам ключ, а значення буде правильним\r",
+									"    }        \r",
+									"  },\r",
+									"  \"required\":[\"statusss\"] // Навмисно зробив помилку щоб показати як воно працює!\r",
+									"}\r",
+									"\r",
+									"\r",
+									"pm.test('Schema is valid4', function () {\r",
+									"   pm.response.to.have.jsonSchema(schema);\r",
+									"});\r",
+									"*/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/cars/models/1",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"cars",
+								"models",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "5. Chai",
+			"item": [
+				{
+					"name": "Expect.to.equal",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/*\r",
+									"\r",
+									"В Chai бібліотеці, метод to використовується для створення ланцюга методів, які дозволяють вам визначити очікувану поведінку об'єкта. Цей метод призначений для полегшення структури тестових виразів та зроблення їх більш зрозумілими\r",
+									"*/\r",
+									"// Розглянемо expect().to який включає в себе дуже багато методів.\r",
+									"const jsonData = pm.response.json();\r",
+									"/*\r",
+									"pm.test(\"expect().to.equal()\", function () {   \r",
+									"    pm.expect(jsonData.status).to.equal(\"ok\");\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// А якщо ми хочемо порівняти відповідь ?\r",
+									"/*const object1 = {\r",
+									"    status: \"ok\",\r",
+									"    data: {\r",
+									"        id: 1,\r",
+									"        carBrandId: 1,\r",
+									"        title: \"TT\"\r",
+									"    }\r",
+									"}\r",
+									"// Що трапилось ?\r",
+									"\r",
+									"pm.test(\"expect().to.equal()\", function () {   \r",
+									"    pm.expect(object1).to.equal(jsonData);\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Ось що нам потрібно!\r",
+									"/*\r",
+									"pm.test(\"expect().to.equal()\", function () {   \r",
+									"    pm.expect(object1).to.eql(jsonData);\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"/*\r",
+									".equal(value): Метод .equal виконує строго порівняння (===), що означає, що він перевіряє, чи дорівнюють два значення як за значенням, так і за типом даних.\r",
+									".eql(value): Метод .eql виконує глибоке порівняння (deep equality), що означає, що він порівнює значення об'єктів та масивів, а також їх внутрішні структури.\r",
+									"*/\r",
+									"\r",
+									"// Але ще є такий спосіб. deep працює для роботи з обєктами, масивами. \r",
+									"/*\r",
+									"pm.test(\"expect().to.deep.equal()\", function () {   \r",
+									"    pm.expect(object1).to.deep.equal(jsonData);\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Також можна ще проводити комбінації зворотні!\r",
+									"/*\r",
+									"pm.test(\"expect().to.not.deep.equal()\", function () {   \r",
+									"    pm.expect(object1).to.not.deep.equal(jsonData);\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/cars/models/1",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"cars",
+								"models",
+								"1"
+							]
+						},
+						"description": "<img src=\"https://content.pstmn.io/aec4303f-e7b6-4aa1-bf81-8ccfddc8277c/U2NyZWVuc2hvdF8yNC5wbmc=\" width=\"806\" height=\"299\">"
+					},
+					"response": []
+				},
+				{
+					"name": "Expect.to.be",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/*\r",
+									"Метод .to.be в бібліотеці Chai використовується для встановлення та перевірки стану об'єктів, властивостей або результатів функцій. Він дозволяє вам визначити очікувану умову та перевірити, чи вона виконується для об'єкта чи значення.\r",
+									"*/\r",
+									"const jsonData = pm.response.json();\r",
+									"const result = jsonData.status === \"ok\";\r",
+									"// Тут все просто!\r",
+									"/*\r",
+									"pm.test(\"expect().to.be.true\", function () {   \r",
+									"    pm.expect(result).to.be.true\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// І тут всн просто\r",
+									"/*\r",
+									"pm.test(\"expect().to.be.true\", function () {   \r",
+									"    pm.expect(result).to.be.false;\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Перевірка на тип даних!\r",
+									"/*\r",
+									"pm.test(\"expect().to.be.string\", function () {   \r",
+									"    pm.expect(jsonData.status).to.be.string;\r",
+									"    pm.expect(jsonData.status).to.be.NaN;\r",
+									"    pm.expect(jsonData.status).to.be.null;\r",
+									"    pm.expect(jsonData.status).to.be.undefined;\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Перевірка масива!\r",
+									"/*\r",
+									"let array = [];\r",
+									"pm.test(\"expect().to.be.empty\", function () {   \r",
+									"    pm.expect(array).to.be.empty;\r",
+									"    pm.expect([1,2,3]).to.be.empty;\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Один з ! \r",
+									"/*\r",
+									"pm.test(\"expect().to.be.oneOf\", function () {      \r",
+									"     pm.expect(4).to.be.oneOf([2,4,6]);\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Але цей метод не містить всі потрібні типи даних! Можна також використовувати. to.be.a/an\r",
+									"// Різниця такая сама як і в англійській, це тільки синтаксичний цукор!\r",
+									"/*\r",
+									"pm.test(\"expect().to.be.true\", function () {   \r",
+									"    pm.expect(jsonData.status).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.status).to.be.a(\"number\");\r",
+									"    pm.expect(jsonData.status).to.be.an(\"undefined\");\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/cars/models/1",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"cars",
+								"models",
+								"1"
+							]
+						},
+						"description": "<img src=\"https://content.pstmn.io/aec4303f-e7b6-4aa1-bf81-8ccfddc8277c/U2NyZWVuc2hvdF8yNC5wbmc=\" width=\"806\" height=\"299\">"
+					},
+					"response": []
+				},
+				{
+					"name": "Expect.to.have/has",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/*\r",
+									"Методи .have і .has в бібліотеці Chai використовуються для визначення наявності певної властивості (або кількості властивостей) у об'єкті та подальшої перевірки цих властивостей на відповідність очікуваним значенням.\r",
+									"*/\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"// Перевірка наявності властивості!\r",
+									"/*\r",
+									"pm.test(\"expect().to.have.property\", function () {   \r",
+									"    pm.expect(jsonData).to.have.property('status')\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Перевірка наявності властивості зі значенням\r",
+									"/*\r",
+									"pm.test(\"expect().to.have.property\", function () {   \r",
+									"    pm.expect(jsonData).to.have.property('status','ok')\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Перевірка наявності властивості як обєкат\r",
+									"/*\r",
+									"pm.test(\"that.is.an('object')\", function () {   \r",
+									"    pm.expect(jsonData).to.have.property('data').that.is.an(\"object\")\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// Перевірка одразу декількох ключів\r",
+									"/*\r",
+									"pm.test(\"that.is.an('object')\", function () {   \r",
+									"    pm.expect(jsonData).to.have.keys('data','status');\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/cars/models/1",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"cars",
+								"models",
+								"1"
+							]
+						},
+						"description": "<img src=\"https://content.pstmn.io/aec4303f-e7b6-4aa1-bf81-8ccfddc8277c/U2NyZWVuc2hvdF8yNC5wbmc=\" width=\"806\" height=\"299\">"
+					},
+					"response": []
+				},
+				{
+					"name": "hasOwnProperty",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// А давайте розглянемо таку умовну ситуацію\r",
+									"let obj = {\r",
+									"    name:'Test',\r",
+									"    lastName:'Test',\r",
+									"    qwer1234dfdfd:{ // Якийсь унікальний ключь який змінюється\r",
+									"        publicKey:'public', // Як нам тепер отримати значення publicKey ?\r",
+									"        privateKey:'asdasdsad43243dad'\r",
+									"    }\r",
+									"}\r",
+									"\r",
+									"\r",
+									"pm.test(\"hasOwnProperty\", function () {   \r",
+									"    for(let key in obj){   \r",
+									"        if(obj[key].hasOwnProperty('publicKey')){\r",
+									"            pm.expect(obj[key].publicKey).to.eql('public');\r",
+									"        }\r",
+									"    }   \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/cars/models/1",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"cars",
+								"models",
+								"1"
+							]
+						},
+						"description": "<img src=\"https://content.pstmn.io/aec4303f-e7b6-4aa1-bf81-8ccfddc8277c/U2NyZWVuc2hvdF8yNC5wbmc=\" width=\"806\" height=\"299\">"
+					},
+					"response": []
+				},
+				{
+					"name": "Expect.to.match",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"// А ось і наші регулярні вирази!!\r",
+									"pm.test(\"expect().to.be.true\", function () {   \r",
+									"    pm.expect(jsonData.data.title).to.match(/TT|Q7/);\r",
+									"    pm.expect(jsonData.data.id).to.match(/[1,2,3,4]/)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/cars/models/1",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"cars",
+								"models",
+								"1"
+							]
+						},
+						"description": "<img src=\"https://content.pstmn.io/aec4303f-e7b6-4aa1-bf81-8ccfddc8277c/U2NyZWVuc2hvdF8yNC5wbmc=\" width=\"806\" height=\"299\">"
+					},
+					"response": []
+				},
+				{
+					"name": ".ordered",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/*\r",
+									"Метод .ordered в бібліотеці Chai використовується для перевірки порядку елементів у масиві або іншій послідовності. Він дозволяє перевірити, чи вказані елементи зустрічаються в заданому порядку в послідовності. Цей метод корисний, коли вам потрібно перевірити, чи деякі події або дії відбулися в певному порядку.\r",
+									"*/\r",
+									"/*\r",
+									"let array = [1,2,4,5,6];\r",
+									"// Розглянемо прості значення\r",
+									"pm.test(\".ordered\", function () {  \r",
+									"    pm.expect(array).to.be.ordered.members([1,2,4,5,6])\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"const arrayObj = [{id:1,name:'test'},{id:4,name:'test2'}];\r",
+									"// так і що в нас вийшло ?\r",
+									"/*\r",
+									"pm.test(\".ordered\", function () {  \r",
+									"    pm.expect(arrayObj).to.be.ordered.members([{id:1,name:'test'},{id:4,name:'test2'}]) // ????\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"// А ось так вже інша справа!\r",
+									"/*\r",
+									"pm.test(\".ordered\", function () {  \r",
+									"    pm.expect(arrayObj).to.be.ordered.deep.members([{id:1,name:'test'},{id:4,name:'test2'}])\r",
+									"});\r",
+									"*/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/cars/models",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"cars",
+								"models"
+							]
+						},
+						"description": "<img src=\"https://content.pstmn.io/aec4303f-e7b6-4aa1-bf81-8ccfddc8277c/U2NyZWVuc2hvdF8yNC5wbmc=\" width=\"806\" height=\"299\">"
+					},
+					"response": []
+				},
+				{
+					"name": "include",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/*\r",
+									"Метод .include в бібліотеці Chai використовується для перевірки, чи містить масив (або інша послідовність) певний елемент чи значення. Він перевіряє, чи є певний елемент присутнім у вказаній послідовності.\r",
+									"*/\r",
+									"\r",
+									"let array = [1,2,4,5,6];\r",
+									"// Розглянемо прості значення\r",
+									"/*\r",
+									"pm.test(\"include\", function () {  \r",
+									"    pm.expect(array).to.include(4);\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"const response = pm.response.json();\r",
+									"// І знову робота з обєктом\r",
+									"/*\r",
+									"pm.test(\"include\", function () {  \r",
+									"    pm.expect(response.data).to.include({\r",
+									"            id: 1,\r",
+									"            carBrandId: 1,\r",
+									"            title: \"TT\"\r",
+									"        });\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"// А ось так краще!\r",
+									"/*\r",
+									"pm.test(\"include deep\", function () {  \r",
+									"    pm.expect(response.data).to.deep.include({\r",
+									"            id: 1,\r",
+									"            carBrandId: 1,\r",
+									"            title: \"TT\"\r",
+									"        });\r",
+									"});\r",
+									"*/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qauto.forstudy.space/api/cars/models",
+							"protocol": "https",
+							"host": [
+								"qauto",
+								"forstudy",
+								"space"
+							],
+							"path": [
+								"api",
+								"cars",
+								"models"
+							]
+						},
+						"description": "<img src=\"https://content.pstmn.io/aec4303f-e7b6-4aa1-bf81-8ccfddc8277c/U2NyZWVuc2hvdF8yNC5wbmc=\" width=\"806\" height=\"299\">"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"//console.log(\"Pre request from collection\")"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"//console.log(\"Test from collection\")"
+				]
+			}
+		}
+	]
+}
